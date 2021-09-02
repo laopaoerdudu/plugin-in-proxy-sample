@@ -5,14 +5,12 @@ import android.os.Bundle
 import android.view.MotionEvent
 
 interface IActivity {
-    fun attach(proxyActivity: Activity)
-    fun onCreate(saveInstanceState: Bundle)
+    fun attach(proxyActivity: Activity?)
+    fun onCreate(savedInstanceState: Bundle?)
     fun onStart()
     fun onResume()
     fun onPause()
-    fun onSaveInstanceState(outState: Bundle)
     fun onStop()
+    fun onSaveInstanceState(outState: Bundle)
     fun onDestroy()
-    fun onTouchEvent(event: MotionEvent)
-    fun onBackPressed()
 }

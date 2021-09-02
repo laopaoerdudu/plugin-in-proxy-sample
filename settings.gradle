@@ -1,4 +1,4 @@
 rootProject.name = "plugin-in-proxy-sample"
 include ':app'
-include ':taopiaopiao'
 include ':pluginstand'
+include ':taopiaopiao'

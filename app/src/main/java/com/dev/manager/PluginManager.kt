@@ -14,18 +14,18 @@ object PluginManager {
     private var packageInfo: PackageInfo? = null
 
     fun loadPlugin(context: Context) {
-        val path = File(context.getDir("plugin", Context.MODE_PRIVATE), "plugin.apk").absolutePath
+        val dexPath = File(context.getDir("plugin", Context.MODE_PRIVATE), "plugin.apk").absolutePath
         packageInfo =
-            context.packageManager.getPackageArchiveInfo(path, PackageManager.GET_ACTIVITIES)
+            context.packageManager.getPackageArchiveInfo(dexPath, PackageManager.GET_ACTIVITIES)
 
-        val dex = context.getDir("dex", Context.MODE_PRIVATE).absolutePath
-        dexClassLoader = DexClassLoader(path, dex, null, context.classLoader)
+        val optimizedDirectory = context.getDir("dex", Context.MODE_PRIVATE).absolutePath
+        dexClassLoader = DexClassLoader(dexPath, optimizedDirectory, null, context.classLoader)
 
         try {
             val manager = AssetManager::class.java.newInstance()
             val addAssetPathMethod =
                 AssetManager::class.java.getMethod("addAssetPath", String::class.java)
-            addAssetPathMethod.invoke(manager, path)
+            addAssetPathMethod.invoke(manager, dexPath)
             resources = Resources(
                 manager,
                 context.resources.displayMetrics,

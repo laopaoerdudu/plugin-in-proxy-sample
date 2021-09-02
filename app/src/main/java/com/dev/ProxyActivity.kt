@@ -3,10 +3,13 @@ package com.dev
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.manager.PluginManager
 import com.dev.pluginstand.IActivity
 
+// 代理类其实就是插件的副本
+// ClassLoader, Resources 都是插件的
 class ProxyActivity : AppCompatActivity() {
     private lateinit var shadowActivity: IActivity
 
@@ -47,6 +50,7 @@ class ProxyActivity : AppCompatActivity() {
 
     override fun startActivity(intent: Intent?) {
         super.startActivity(Intent(this, ProxyActivity::class.java).apply {
+            Log.i("WWE", "ProxyActivity -> startActivity -> className -> ${intent?.getStringExtra("className")}")
             putExtra("className", intent?.getStringExtra("className"))
         })
     }

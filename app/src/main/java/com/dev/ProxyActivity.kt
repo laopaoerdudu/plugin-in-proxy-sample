@@ -50,7 +50,7 @@ class ProxyActivity : AppCompatActivity() {
 
     override fun startActivity(intent: Intent?) {
         super.startActivity(Intent(this, ProxyActivity::class.java).apply {
-            Log.i("WWE", "ProxyActivity -> startActivity -> className -> ${intent?.getStringExtra("className")}")
+            // className -> com.dev.taopiaopiao.ImageActivity
             putExtra("className", intent?.getStringExtra("className"))
         })
     }

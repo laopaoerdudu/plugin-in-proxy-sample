@@ -30,6 +30,7 @@ open class BaseActivity : Activity(), IActivity {
     override fun onDestroy() {}
 
     override fun setContentView(layoutResID: Int) {
+        // who -> com.dev.ProxyActivity
         who?.let {
             it.setContentView(layoutResID)
         } ?: run {
@@ -39,6 +40,7 @@ open class BaseActivity : Activity(), IActivity {
 
     override fun startActivity(intent: Intent?) {
         who?.startActivity(Intent().apply {
+            // className -> com.dev.taopiaopiao.ImageActivity
             putExtra("className", intent?.component?.className)
         })
     }

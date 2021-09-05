@@ -7,8 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import com.dev.manager.PluginManager
 import com.dev.pluginstand.IActivity
 
-// 代理类其实就是插件的副本
-// ClassLoader, Resources 都是插件的
 class ProxyActivity : AppCompatActivity() {
     private lateinit var shadowActivity: IActivity
 

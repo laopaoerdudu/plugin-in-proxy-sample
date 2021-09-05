@@ -15,5 +15,5 @@
         android:gravity="center"
         android:minHeight="50dp"
         android:onClick="rooter"
-        android:text="Rooter" />
+        android:text="加载插件 Activity" />
 </LinearLayout>

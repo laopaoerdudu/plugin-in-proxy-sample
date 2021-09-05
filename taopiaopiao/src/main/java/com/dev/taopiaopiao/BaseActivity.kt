@@ -39,6 +39,7 @@ open class BaseActivity : Activity(), IActivity {
     }
 
     override fun startActivity(intent: Intent?) {
+        // 最后还是使用了 ProxyActivity 的 startActivity 方法
         who?.startActivity(Intent().apply {
             // className -> com.dev.taopiaopiao.ImageActivity
             putExtra("className", intent?.component?.className)

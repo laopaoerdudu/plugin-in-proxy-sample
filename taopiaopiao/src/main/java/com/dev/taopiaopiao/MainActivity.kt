@@ -2,6 +2,7 @@ package com.dev.taopiaopiao
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.ImageView
 
 class MainActivity : BaseActivity() {
@@ -19,5 +20,9 @@ class MainActivity : BaseActivity() {
             // 调用 BaseActivity 的 startActivity 方法
             startActivity(Intent(who, ImageActivity::class.java))
         }
+    }
+
+    fun btnStartService(view: View) {
+        startService(Intent(who, WorkService::class.java))
     }
 }

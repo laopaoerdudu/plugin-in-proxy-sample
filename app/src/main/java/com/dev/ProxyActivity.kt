@@ -1,5 +1,6 @@
 package com.dev
 
+import android.content.ComponentName
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
@@ -8,7 +9,7 @@ import com.dev.manager.PluginManager
 import com.dev.pluginstand.IActivity
 
 class ProxyActivity : AppCompatActivity() {
-    private lateinit var shadowActivity: IActivity
+    private var shadowActivity: IActivity? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,9 +18,9 @@ class ProxyActivity : AppCompatActivity() {
             val target = classLoader?.loadClass(className)
             val constructor = target?.getConstructor(*arrayOf())
             val targetActivity = constructor?.newInstance(*arrayOf())
-            shadowActivity = targetActivity as IActivity
-            shadowActivity.attach(this)
-            shadowActivity.onCreate(Bundle())
+            shadowActivity = targetActivity as? IActivity
+            shadowActivity?.attach(this)
+            shadowActivity?.onCreate(Bundle())
         } catch (ex: Exception) {
             ex.printStackTrace()
         }
@@ -27,22 +28,22 @@ class ProxyActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        shadowActivity.onStart()
+        shadowActivity?.onStart()
     }
 
     override fun onResume() {
         super.onResume()
-        shadowActivity.onResume()
+        shadowActivity?.onResume()
     }
 
     override fun onStop() {
         super.onStop()
-        shadowActivity.onStop()
+        shadowActivity?.onStop()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        shadowActivity.onDestroy()
+        shadowActivity?.onDestroy()
     }
 
     override fun startActivity(intent: Intent?) {
@@ -50,6 +51,12 @@ class ProxyActivity : AppCompatActivity() {
         // className -> com.dev.taopiaopiao.ImageActivity
         super.startActivity(Intent(this, ProxyActivity::class.java).apply {
             putExtra("className", intent?.getStringExtra("className"))
+        })
+    }
+
+    override fun startService(serviceIntent: Intent?): ComponentName? {
+        return super.startService(Intent(this, ProxyService::class.java).apply {
+            putExtra("serviceName", serviceIntent?.getStringExtra("serviceName"))
         })
     }
 

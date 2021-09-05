@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
         PluginManager.loadPlugin(this)
     }
 
-    fun rooter(view: View) {
+    fun loadPlugin(view: View) {
         startActivity(Intent(this, ProxyActivity::class.java).apply {
             putExtra("className", PluginManager.getPackageInfo()?.activities?.get(0)?.name)
         })

@@ -11,7 +11,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         // 调用 BaseActivity 的 setContentView 方法
-        // 其实最终调用的是 ProxyActivity 的 setContentView 方法
         setContentView(R.layout.activity_main)
 
         // 调用 BaseActivity 的 findViewById 方法

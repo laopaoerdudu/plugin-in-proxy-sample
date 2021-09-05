@@ -10,7 +10,7 @@ class ProxyService : Service() {
     private var shadowService: IService? = null
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if(shadowService == null) {
+        if (shadowService == null) {
             setup(intent)
         }
         return shadowService?.onStartCommand(intent, flags, startId) ?: 0
@@ -22,7 +22,8 @@ class ProxyService : Service() {
     }
 
     override fun onUnbind(intent: Intent?): Boolean {
-        return shadowService?.onUnbind(intent) ?: false
+        shadowService?.onUnbind(intent)
+        return super.onUnbind(intent)
     }
 
     override fun getClassLoader(): ClassLoader? = PluginManager.getDexClassLoader()

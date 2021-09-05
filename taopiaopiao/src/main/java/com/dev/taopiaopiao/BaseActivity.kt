@@ -2,6 +2,7 @@ package com.dev.taopiaopiao
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -43,6 +44,12 @@ open class BaseActivity : Activity(), IActivity {
         who?.startActivity(Intent().apply {
             // className -> com.dev.taopiaopiao.ImageActivity
             putExtra("className", intent?.component?.className)
+        })
+    }
+
+    override fun startService(serviceIntent: Intent?): ComponentName? {
+        return who?.startService(Intent().apply {
+            putExtra("serviceName", serviceIntent?.component?.className);
         })
     }
 

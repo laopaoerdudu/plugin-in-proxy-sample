@@ -3,7 +3,6 @@ package com.dev
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.manager.PluginManager
 import com.dev.pluginstand.IActivity

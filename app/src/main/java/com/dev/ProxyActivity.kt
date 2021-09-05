@@ -3,6 +3,7 @@ package com.dev
 import android.content.Intent
 import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.dev.manager.PluginManager
 import com.dev.pluginstand.IActivity
@@ -46,8 +47,9 @@ class ProxyActivity : AppCompatActivity() {
     }
 
     override fun startActivity(intent: Intent?) {
+        // this -> com.dev.ProxyActivity
+        // className -> com.dev.taopiaopiao.ImageActivity
         super.startActivity(Intent(this, ProxyActivity::class.java).apply {
-            // className -> com.dev.taopiaopiao.ImageActivity
             putExtra("className", intent?.getStringExtra("className"))
         })
     }

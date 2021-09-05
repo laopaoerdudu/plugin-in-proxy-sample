@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Plugininproxysample">
-        <activity android:name=".MainActivity">
+        <activity android:name=".TaoMainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,6 +18,6 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.dev.taopiaopiao.WorkService" />
+        <service android:name="com.dev.taopiaopiao.TaoService" />
     </application>
 </manifest>

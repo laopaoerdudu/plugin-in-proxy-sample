@@ -2,7 +2,7 @@ package com.dev.taopiaopiao
 
 import android.os.Bundle
 
-class ImageActivity : BaseActivity() {
+class TaoImageActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 
-class MainActivity : BaseActivity() {
+class TaoMainActivity : BaseActivity() {
 
     // 重写 BaseActivity 中的 onCreate
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,11 +18,11 @@ class MainActivity : BaseActivity() {
         findViewById<ImageView>(R.id.ivHome).setOnClickListener {
 
             // 调用 BaseActivity 的 startActivity 方法
-            startActivity(Intent(who, ImageActivity::class.java))
+            startActivity(Intent(who, TaoImageActivity::class.java))
         }
 
         findViewById<Button>(R.id.btnStartService).setOnClickListener {
-            startService(Intent(who, WorkService::class.java))
+            startService(Intent(who, TaoService::class.java))
         }
     }
 }

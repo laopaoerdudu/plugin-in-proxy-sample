@@ -48,7 +48,7 @@ class ProxyActivity : AppCompatActivity() {
 
     override fun startActivity(intent: Intent?) {
         // this -> com.dev.ProxyActivity
-        // className -> com.dev.taopiaopiao.ImageActivity
+        // className -> com.dev.taopiaopiao.TaoImageActivity
         super.startActivity(Intent(this, ProxyActivity::class.java).apply {
             putExtra("className", intent?.getStringExtra("className"))
         })

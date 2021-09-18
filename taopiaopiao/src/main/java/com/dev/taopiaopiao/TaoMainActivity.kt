@@ -1,6 +1,7 @@
 package com.dev.taopiaopiao
 
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
@@ -23,6 +24,19 @@ class TaoMainActivity : BaseActivity() {
 
         findViewById<Button>(R.id.btnStartService).setOnClickListener {
             startService(Intent(who, TaoService::class.java))
+        }
+
+        // 因为是动态广播，所以是先注册，再发送
+        findViewById<Button>(R.id.btnRegisterBroadcast).setOnClickListener {
+            registerReceiver(TaoReceiver(), IntentFilter().apply {
+                addAction("com.dev.taopiaopiao.TaoMainActivity")
+            })
+        }
+
+        findViewById<Button>(R.id.btnSendBroadcast).setOnClickListener {
+            sendBroadcast(Intent().apply {
+                action = "com.dev.taopiaopiao.TaoMainActivity"
+            })
         }
     }
 }

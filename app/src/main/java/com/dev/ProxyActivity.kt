@@ -1,7 +1,9 @@
 package com.dev
 
+import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Intent
+import android.content.IntentFilter
 import android.content.res.Resources
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -58,6 +60,16 @@ class ProxyActivity : AppCompatActivity() {
         return super.startService(Intent(this, ProxyService::class.java).apply {
             putExtra("serviceName", serviceIntent?.getStringExtra("serviceName"))
         })
+    }
+
+    override fun registerReceiver(receiver: BroadcastReceiver?, filter: IntentFilter?): Intent? {
+        val intentFilter = IntentFilter()
+        filter?.let {
+            for (i in 0 until filter.countActions()) {
+                intentFilter.addAction(filter.getAction(i))
+            }
+        }
+        return super.registerReceiver(ProxyReceiver(receiver?.javaClass?.name, this), intentFilter)
     }
 
     override fun getClassLoader(): ClassLoader? = PluginManager.getDexClassLoader()

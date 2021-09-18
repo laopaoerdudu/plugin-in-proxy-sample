@@ -5,5 +5,5 @@ import android.content.Intent
 
 interface IBroadcast {
     fun attach(context: Context)
-    fun onReceive(context: Context, intent: Intent)
+    fun onReceive(context: Context?, intent: Intent?)
 }

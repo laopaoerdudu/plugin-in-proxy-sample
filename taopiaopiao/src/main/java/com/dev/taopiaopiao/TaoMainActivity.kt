@@ -4,7 +4,6 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.widget.Button
-import android.widget.ImageView
 
 class TaoMainActivity : BaseActivity() {
 
@@ -12,10 +11,10 @@ class TaoMainActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // 调用 BaseActivity 的 setContentView 方法
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.tao_activity_main)
 
         // 调用 BaseActivity 的 findViewById 方法
-        findViewById<ImageView>(R.id.ivHome).setOnClickListener {
+        findViewById<Button>(R.id.ivHome).setOnClickListener {
             // 调用 BaseActivity 的 startActivity 方法
             startActivity(Intent(who, TaoImageActivity::class.java))
         }

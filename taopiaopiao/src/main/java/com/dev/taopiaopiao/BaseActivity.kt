@@ -2,8 +2,10 @@ package com.dev.taopiaopiao
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.BroadcastReceiver
 import android.content.ComponentName
 import android.content.Intent
+import android.content.IntentFilter
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -46,6 +48,14 @@ open class BaseActivity : AppCompatActivity(), IActivity {
             // className -> com.dev.taopiaopiao.ImageActivity
             putExtra("className", intent?.component?.className)
         })
+    }
+
+    override fun registerReceiver(receiver: BroadcastReceiver?, filter: IntentFilter?): Intent? {
+        return who?.registerReceiver(receiver, filter)
+    }
+
+    override fun sendBroadcast(intent: Intent?) {
+        who?.sendBroadcast(intent)
     }
 
     override fun startService(serviceIntent: Intent?): ComponentName? {

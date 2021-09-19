@@ -1,4 +1,6 @@
 
+这个 Demo 主要演示插桩式实现 Android 插件化
+
 ```
 java.lang.NullPointerException: Attempt to invoke virtual method 'void android.app.Application.dispatchActivityStarted(android.app.Activity)' on a null object reference
         at android.app.Activity.dispatchActivityStarted(Activity.java:1347)

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.IntentFilter
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 
 class TaoMainActivity : BaseActivity() {
 
@@ -14,23 +15,17 @@ class TaoMainActivity : BaseActivity() {
         setContentView(R.layout.tao_activity_main)
 
         // 调用 BaseActivity 的 findViewById 方法
-        findViewById<Button>(R.id.ivHome).setOnClickListener {
+        findViewById<ImageView>(R.id.ivHome).setOnClickListener {
+
             // 调用 BaseActivity 的 startActivity 方法
             startActivity(Intent(who, TaoImageActivity::class.java))
         }
 
-        findViewById<Button>(R.id.btnStartService).setOnClickListener {
-           startService(Intent(who, TaoService::class.java))
-        }
-
-        // 因为是动态广播，所以是先注册，再发送
-        findViewById<Button>(R.id.btnRegisterBroadcast).setOnClickListener {
+        findViewById<Button>(R.id.btnStartBroadcast).setOnClickListener {
             registerReceiver(TaoReceiver(), IntentFilter().apply {
                 addAction("com.dev.taopiaopiao.TaoMainActivity")
             })
-        }
 
-        findViewById<Button>(R.id.btnSendBroadcast).setOnClickListener {
             sendBroadcast(Intent().apply {
                 action = "com.dev.taopiaopiao.TaoMainActivity"
             })

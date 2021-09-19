@@ -6,10 +6,11 @@ import android.content.ComponentName
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.dev.pluginstand.IActivity
 
 @SuppressLint("MissingSuperCall")
-open class BaseActivity : Activity(), IActivity {
+open class BaseActivity : AppCompatActivity(), IActivity {
     var who: Activity? = null
 
     override fun attach(proxyActivity: Activity?) {

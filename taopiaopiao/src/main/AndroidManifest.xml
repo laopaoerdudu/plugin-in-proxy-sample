@@ -18,6 +18,6 @@
             </intent-filter>
         </activity>
 
-        <service android:name="com.dev.taopiaopiao.TaoService" />
+        <service android:name=".TaoService" />
     </application>
 </manifest>
